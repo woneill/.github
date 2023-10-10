@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Default preset for use with woneill's repos",
+  "extends": [
+    "config:best-practices",
+    ":automergeBranch",
+    ":dependencyDashboard",
+    ":maintainLockFilesWeekly",
+    ":prNotPending",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)",
+    "docker:enableMajor",
+    "group:linters"
+  ],
+  "branchPrefix": "github-renovate/",
+  "onboardingBranch": "github-renovate/configure",
+  "autodiscover": true,
+  "minimumReleaseAge": "3 days",
+  "packageRules": [
+    {
+      "description": "Update the Renovate GitHub action weekly with fix type",
+      "matchPackageNames": "renovatebot/github-action",
+      "extends": [":semanticCommitType(fix)", "schedule:weekly"]
+    },
+    {
+      "description": "Auto-merge non-major updates",
+      "matchUpdateTypes": ["minor", "patch", "digest", "lockFileMaintenance"],
+      "automerge": true
+    }
+  ]
+}
