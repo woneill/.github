@@ -4,4 +4,4 @@ repos:
     rev: 37.10.0
     hooks:
       - id: renovate-config-validator
-        files: (default|renovate).json
+        files: (default|renovate-config).json
