@@ -19,7 +19,7 @@
   "packageRules": [
     {
       "description": "Update the Renovate GitHub action weekly with fix type",
-      "matchPackageNames": "renovatebot/github-action",
+      "matchDepNames": "renovatebot/github-action",
       "extends": [":semanticCommitType(fix)", "schedule:weekly"]
     },
     {
