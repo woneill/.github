@@ -6,7 +6,6 @@
     ":automergeBranch",
     ":dependencyDashboard",
     ":maintainLockFilesWeekly",
-    ":prNotPending",
     ":rebaseStalePrs",
     ":semanticCommits",
     ":semanticCommitScope(deps)",
