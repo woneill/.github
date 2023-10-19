@@ -9,6 +9,7 @@
     ":rebaseStalePrs",
     ":semanticCommits",
     ":semanticCommitScope(deps)",
+    ":skipStatusChecks",
     "docker:enableMajor",
     "group:linters"
   ],
