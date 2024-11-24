@@ -31,6 +31,10 @@
       "description": "Auto-merge non-major updates",
       "matchUpdateTypes": ["minor", "patch", "digest", "lockFileMaintenance"],
       "automerge": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "versioning": "loose"
     }
   ],
   "reviewers": ["woneill"]
