@@ -18,6 +18,9 @@
   "autodiscover": true,
   "minimumReleaseAge": "3 days",
   "prHourlyLimit": 0,
+  "pre-commit": {
+      "enabled": true
+  },
   "packageRules": [
     {
       "description": "Update the Renovate GitHub action weekly with fix type",
