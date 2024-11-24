@@ -32,5 +32,6 @@
       "matchUpdateTypes": ["minor", "patch", "digest", "lockFileMaintenance"],
       "automerge": true
     }
-  ]
+  ],
+  "reviewers": ["woneill"]
 }
