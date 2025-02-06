@@ -43,7 +43,7 @@ jobs:
         with:
           configurationFile: renovate-config.js
           token: "${{ steps.get_token.outputs.token }}"
-          env-regex: "^(?:RENOVATE_\\w+|DOCKERHUB_USERNAME|DOCKERHUB_TOKEN)$"
+          env-regex: "^(?:RENOVATE_\\w+|REPOLIST|DOCKERHUB_USERNAME|DOCKERHUB_TOKEN)$"
         env:
           RENOVATE_DRY_RUN: ${{ contains(inputs.dryRun, 'true') && 'full' || '' }}
           REPOLIST: ${{ inputs.repo != '' && inputs.repo || '' }}
