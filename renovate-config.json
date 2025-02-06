@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Default preset for use with woneill's repos",
+  "extends": [
+    "config:best-practices",
+    ":automergeBranch",
+    ":maintainLockFilesWeekly",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)",
+    "docker:enableMajor",
+    "group:linters",
+    "customManagers:helmChartYamlAppVersions"
+  ],
+  "pre-commit": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "versioning": "loose"
+    }
+  ],
+  "reviewers": ["woneill"]
+}

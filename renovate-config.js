@@ -3,26 +3,7 @@ module.exports = {
   requireConfig: "optional",
   autodiscover: true,
   autodiscoverFilter: [process.env.REPOLIST || "woneill/*"],
-  extends: [
-    "config:best-practices",
-    ":automergeBranch",
-    ":maintainLockFilesWeekly",
-    ":rebaseStalePrs",
-    ":semanticCommits",
-    ":semanticCommitScope(deps)",
-    "docker:enableMajor",
-    "group:linters",
-    "customManagers:helmChartYamlAppVersions",
-  ],
-  "pre-commit": {
-    enabled: true,
-  },
-  packageRules: [
-    {
-      matchDatasources: ["docker"],
-      versioning: "loose",
-    },
-  ],
+  extends: ["github>woneill/.github:renovate-config"],
   hostRules: [
     {
       hostType: "docker",
@@ -30,5 +11,4 @@ module.exports = {
       password: process.env.DOCKERHUB_TOKEN || "",
     },
   ],
-  reviewers: ["woneill"],
 };
