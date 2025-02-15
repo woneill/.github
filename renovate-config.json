@@ -4,7 +4,6 @@
   "extends": [
     "config:best-practices",
     ":automergePr",
-    ":automergeRequireAllStatusChecks",
     ":automergeStableNonMajor",
     ":combinePatchMinorReleases",
     ":maintainLockFilesWeekly",
@@ -22,6 +21,17 @@
     {
       "matchDatasources": ["docker"],
       "versioning": "loose"
+    },
+    {
+      "matchRepositories": [
+        "!woneill/asdf-*",
+        "!woneill/luckypawproductions.com",
+        "!woneill/tailscale-acls",
+        "!woneill/terraform-*",
+        "!woneill/woneill.com",
+        "!woneill/woneill-charts"
+      ],
+      "ignoreTests": true
     }
   ],
   "reviewers": ["woneill"]
