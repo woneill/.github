@@ -10,5 +10,11 @@ module.exports = {
       username: process.env.DOCKERHUB_USERNAME || "",
       password: process.env.DOCKERHUB_TOKEN || "",
     },
+    {
+      matchHost: "lscr.io",
+      hostType: "docker",
+      username: "USERNAME",
+      password: process.env.RENOVATE_TOKEN || "",
+    },
   ],
 };
