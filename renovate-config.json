@@ -14,6 +14,7 @@
     "group:linters",
     "customManagers:helmChartYamlAppVersions"
   ],
+  "ignoreDeps": ["mosquitto"],
   "pre-commit": {
     "enabled": true
   },
