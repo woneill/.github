@@ -3,6 +3,7 @@
   "description": "Default preset for use with woneill's repos",
   "extends": [
     "config:best-practices",
+    ":automergeDigest",
     ":automergePr",
     ":automergeStableNonMajor",
     ":combinePatchMinorReleases",
