@@ -8,6 +8,7 @@ jobs:
   safeSettingsSync:
     runs-on: ubuntu-latest
     env:
+      LOG_LEVEL: trace
       # Version/tag of github/safe-settings repo to use:
       SAFE_SETTINGS_VERSION: 2.1.17
 
