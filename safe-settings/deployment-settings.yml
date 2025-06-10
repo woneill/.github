@@ -1,3 +1,4 @@
 ---
 restrictedRepos:
-  - asdf-longhornctl
+  include:
+    - asdf-longhornctl

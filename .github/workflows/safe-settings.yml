@@ -1,8 +1,27 @@
+---
 name: Safe Settings Sync
 on:
   #schedule:
   #  - cron: "0 */4 * * *"
-  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - safe-settings/**
+      - .github/workflows/safe-settings.yaml
+  workflow_dispatch:
+    inputs:
+      NOOP:
+        description: 'Run in no-op mode'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  cancel-in-progress: true
+  group: >-
+    ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
 
 jobs:
   safeSettingsSync:
@@ -13,28 +32,55 @@ jobs:
       SAFE_SETTINGS_VERSION: 2.1.17
 
       # Path on GHA runner box where safe-settings code downloaded to:
-      SAFE_SETTINGS_CODE_DIR: ${{ github.workspace }}/.safe-settings-code
+      SAFE_SETTINGS_CODE_DIR: .safe-settings-code
     steps:
       # Self-checkout of 'admin' repo for access to safe-settings config:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
       # Checkout of safe-settings repo for running full sync:
-      - uses: actions/checkout@v4
+      - name: Checkout GitHub Safe-Settings repository
+        uses: actions/checkout@v4
         with:
-          repository: github/safe-settings
           ref: ${{ env.SAFE_SETTINGS_VERSION }}
           path: ${{ env.SAFE_SETTINGS_CODE_DIR }}
-      - uses: actions/setup-node@v4
-      - run: npm install
+          repository: github/safe-settings
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache-dependency-path:
+            ${{ env.SAFE_SETTINGS_CODE_DIR }}/package-lock.json
+          cache: npm
+          node-version-file: ${{ env.SAFE_SETTINGS_CODE_DIR }}/.nvmrc
+
+      - name: Install dependencies
+        run: npm install
         working-directory: ${{ env.SAFE_SETTINGS_CODE_DIR }}
-      - run: npm run full-sync
+
+      - name: Set no-op mode flag
+        run: |
+          echo "FULL_SYNC_NOP=false" >> "$GITHUB_ENV"
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "FULL_SYNC_NOP=true" >> "$GITHUB_ENV"
+          fi
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            if [[ "${{ inputs.NOOP }}" != "" ]]; then
+              echo "FULL_SYNC_NOP=${{ inputs.NOOP }}" >> "$GITHUB_ENV"
+            fi
+          fi
+
+      - name: Run application
+        run: npm run full-sync
         working-directory: ${{ env.SAFE_SETTINGS_CODE_DIR }}
         env:
-          # GH_ORG: ${{ vars.SAFE_SETTINGS_GH_ORG }}
-          APP_ID: ${{ vars.SAFE_SETTINGS_APP_ID }}
-          PRIVATE_KEY: ${{ secrets.SAFE_SETTINGS_PRIVATE_KEY }}
-          GITHUB_CLIENT_ID: ${{ vars.SAFE_SETTINGS_GITHUB_CLIENT_ID }}
-          GITHUB_CLIENT_SECRET: ${{ secrets.SAFE_SETTINGS_GITHUB_CLIENT_SECRET }}
           ADMIN_REPO: .github
+          APP_ID: ${{ vars.SAFE_SETTINGS_APP_ID }}
           CONFIG_PATH: safe-settings
           DEPLOYMENT_CONFIG_FILE: ${{ github.workspace }}/safe-settings/deployment-settings.yml
+          FULL_SYNC_NOP: ${{ env.FULL_SYNC_NOP }}
+          GITHUB_CLIENT_ID: ${{ vars.SAFE_SETTINGS_GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_SECRET: ${{ secrets.SAFE_SETTINGS_GITHUB_CLIENT_SECRET }}
+          PRIVATE_KEY: ${{ secrets.SAFE_SETTINGS_PRIVATE_KEY }}
