@@ -36,18 +36,18 @@ jobs:
     steps:
       # Self-checkout of 'admin' repo for access to safe-settings config:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
       # Checkout of safe-settings repo for running full sync:
       - name: Checkout GitHub Safe-Settings repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           ref: ${{ env.SAFE_SETTINGS_VERSION }}
           path: ${{ env.SAFE_SETTINGS_CODE_DIR }}
           repository: github/safe-settings
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           cache-dependency-path:
             ${{ env.SAFE_SETTINGS_CODE_DIR }}/package-lock.json
