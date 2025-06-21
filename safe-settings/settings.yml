@@ -1,6 +1,6 @@
 ---
 repository:
-  auto_init: true
+  # auto_init: true
   security_and_analysis:
     advanced_security:
       status: enabled
