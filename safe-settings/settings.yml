@@ -1,6 +1,6 @@
 ---
 repository:
-  # auto_init: true
+  auto_init: true
   security_and_analysis:
     advanced_security:
       status: enabled
@@ -22,7 +22,7 @@ repository:
   squash_merge_commit_title: PR_TITLE
   squash_merge_commit_message: COMMIT_MESSAGES
   archived: false
-  allow_forking: false
+  # allow_forking: false
   web_commit_signoff_required: false
   security:
     enableVulnerabilityAlerts: true
