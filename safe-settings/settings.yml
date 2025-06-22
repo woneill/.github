@@ -1,13 +1,13 @@
 ---
 repository:
   auto_init: true
-  security_and_analysis:
-    # advanced_security:
-    #   status: enabled
-    secret_scanning:
-      status: enabled
-    secret_scanning_push_protection:
-      status: enabled
+  # security_and_analysis:
+  #   advanced_security:
+  #     status: enabled
+  #   secret_scanning:
+  #     status: enabled
+  #   secret_scanning_push_protection:
+  #     status: enabled
   has_issues: true
   has_projects: false
   has_wiki: false
