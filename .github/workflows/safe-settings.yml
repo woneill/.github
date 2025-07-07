@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
     inputs:
       NOOP:
-        description: 'Run in no-op mode'
+        description: "Run in no-op mode"
         required: false
         type: boolean
         default: false
@@ -49,8 +49,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          cache-dependency-path:
-            ${{ env.SAFE_SETTINGS_CODE_DIR }}/package-lock.json
+          cache-dependency-path: ${{ env.SAFE_SETTINGS_CODE_DIR }}/package-lock.json
           cache: npm
           node-version-file: ${{ env.SAFE_SETTINGS_CODE_DIR }}/.nvmrc
 
@@ -80,7 +79,7 @@ jobs:
           APP_ID: ${{ vars.SAFE_SETTINGS_APP_ID }}
           CONFIG_PATH: safe-settings
           DEPLOYMENT_CONFIG_FILE: ${{ github.workspace }}/safe-settings/deployment-settings.yml
-          FULL_SYNC_NOP: ${{ env.FULL_SYNC_NOP }}
+          # FULL_SYNC_NOP: ${{ env.FULL_SYNC_NOP }}
           GITHUB_CLIENT_ID: ${{ vars.SAFE_SETTINGS_GITHUB_CLIENT_ID }}
           GITHUB_CLIENT_SECRET: ${{ secrets.SAFE_SETTINGS_GITHUB_CLIENT_SECRET }}
           PRIVATE_KEY: ${{ secrets.SAFE_SETTINGS_PRIVATE_KEY }}
