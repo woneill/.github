@@ -2,7 +2,7 @@ module.exports = {
   onboarding: false,
   requireConfig: "optional",
   autodiscover: true,
-  autodiscoverFilter: [process.env.REPOLIST || "woneill/*"],
+  autodiscoverFilter: [process.env.REPOLIST || "woneill/*", "!woneill/asdf-*"],
   extends: ["github>woneill/.github:renovate-config"],
   hostRules: [
     {
