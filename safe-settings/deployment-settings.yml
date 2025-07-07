@@ -1,8 +1,10 @@
 ---
 restrictedRepos:
   exclude:
-    - workflow-agent-evaluation
-    - puppetcamp_atlanta_2014
+    - asdf-spruce
+    - asdf-tfsec
+    - kishtonite.com
     - puppet-openldap
     - puppet-rssh
-    - kishtonite.com
+    - puppetcamp_atlanta_2014
+    - workflow-agent-evaluation
