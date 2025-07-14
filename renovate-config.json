@@ -5,6 +5,7 @@
     "config:best-practices",
     ":automergeDigest",
     ":automergePr",
+    ":automergeRequireAllStatusChecks",
     ":automergeStableNonMajor",
     ":combinePatchMinorReleases",
     ":maintainLockFilesWeekly",
@@ -26,12 +27,12 @@
     },
     {
       "matchRepositories": [
-        "!woneill/asdf-*",
-        "!woneill/luckypawproductions.com",
-        "!woneill/tailscale-acls",
-        "!woneill/terraform-*",
-        "!woneill/woneill.com",
-        "!woneill/woneill-charts"
+        "woneill/asdf-*",
+        "woneill/luckypawproductions.com",
+        "woneill/tailscale-acls",
+        "woneill/terraform-*",
+        "woneill/woneill.com",
+        "woneill/woneill-charts"
       ],
       "ignoreTests": true
     }
