@@ -28,6 +28,7 @@
     {
       "matchRepositories": [
         "woneill/asdf-*",
+        "woneill/k8s-homelab",
         "woneill/luckypawproductions.com",
         "woneill/tailscale-acls",
         "woneill/terraform-*",
