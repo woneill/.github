@@ -32,7 +32,7 @@
         "woneill/k8s-homelab",
         "woneill/luckypawproductions.com",
         "woneill/tailscale-acls",
-        "woneill/terraform-*",
+        "woneill/terraform-unifi",
         "woneill/woneill.com",
         "woneill/woneill-charts"
       ],
