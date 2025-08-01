@@ -11,6 +11,12 @@ module.exports = {
       password: process.env.DOCKERHUB_TOKEN || "",
     },
     {
+      matchHost: "ghcr.io",
+      hostType: "docker",
+      username: "USERNAME",
+      password: process.env.GITHUB_TOKEN || "",
+    },
+    {
       matchHost: "lscr.io",
       hostType: "docker",
       username: "USERNAME",
