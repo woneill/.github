@@ -1,6 +1,8 @@
 ---
 restrictedRepos:
   exclude:
+    - asdf-spruce
+    - asdf-tfsec
     - workflow-agent-evaluation
     - puppetcamp_atlanta_2014
     - puppet-openldap
