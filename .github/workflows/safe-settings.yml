@@ -36,11 +36,11 @@ jobs:
     steps:
       # Self-checkout of 'admin' repo for access to safe-settings config:
       - name: Checkout source
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
       # Checkout of safe-settings repo for running full sync:
       - name: Checkout GitHub Safe-Settings repository
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
         with:
           ref: ${{ env.SAFE_SETTINGS_VERSION }}
           path: ${{ env.SAFE_SETTINGS_CODE_DIR }}
