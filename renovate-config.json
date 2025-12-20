@@ -30,6 +30,7 @@
       "matchRepositories": [
         "woneill/.github",
         "woneill/asdf-*",
+        "woneill/dotfiles",
         "woneill/frigate-simplirtc",
         "woneill/k8s-homelab",
         "woneill/luckypawproductions.com",
