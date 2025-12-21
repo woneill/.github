@@ -23,10 +23,12 @@
   },
   "packageRules": [
     {
+      "description": ["Loose versioning for non-semver packages"],
       "matchDatasources": ["docker"],
       "versioning": "loose"
     },
     {
+      "description": ["Automerge without waiting for non-existent tests"],
       "matchRepositories": [
         "woneill/.github",
         "woneill/asdf-*",
@@ -42,9 +44,11 @@
       "ignoreTests": true
     },
     {
-      "matchManagers": ["helmfile"],
-      "matchDatasources": ["helm"],
-      "matchPackagePatterns": ["^oci://"],
+      "description": ["Dont pin digests for OCI things"],
+      "matchDatasources": ["docker"],
+      "matchDepNames": [
+          "registry.k8s.io/nfd/charts/node-feature-discovery"
+      ],
       "pinDigests": false
     }
   ],
