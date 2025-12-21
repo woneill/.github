@@ -40,6 +40,12 @@
         "woneill/woneill-charts"
       ],
       "ignoreTests": true
+    },
+    {
+      "matchManagers": ["helm"],
+      "matchDatasources": ["helm"],
+      "matchPackagePatterns": ["^oci://"],
+      "pinDigests": false
     }
   ],
   "reviewers": ["woneill"]
