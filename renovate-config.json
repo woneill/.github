@@ -42,7 +42,7 @@
       "ignoreTests": true
     },
     {
-      "matchManagers": ["helm"],
+      "matchManagers": ["helmfile"],
       "matchDatasources": ["helm"],
       "matchPackagePatterns": ["^oci://"],
       "pinDigests": false
