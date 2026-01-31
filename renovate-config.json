@@ -52,7 +52,8 @@
       "pinDigests": false
     },
     {
-      "matchManagers": ["pre-commit"],
+      "matchManagers": ["github-actions", "pre-commit"],
+      "matchUpdateTypes": ["patch", "minor", "digest"],
       "ignoreTests": true,
       "automerge": true
     }
