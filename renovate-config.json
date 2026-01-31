@@ -50,6 +50,11 @@
           "registry.k8s.io/nfd/charts/node-feature-discovery"
       ],
       "pinDigests": false
+    },
+    {
+      "matchManagers": ["pre-commit"],
+      "ignoreTests": true,
+      "automerge": true
     }
   ],
   "reviewers": ["woneill"]
