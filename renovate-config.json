@@ -43,7 +43,8 @@
         "woneill/woneill.com",
         "woneill/woneill-charts"
       ],
-      "ignoreTests": true
+      "ignoreTests": true,
+      "requiredStatusChecks": null
     },
     {
       "description": ["Dont pin digests for OCI things"],
