@@ -60,6 +60,11 @@
       "ignoreTests": true,
       "requiredStatusChecks": null,
       "automerge": true
+    },
+    {
+      "matchDepTypes": ["action"],
+      "matchUpdateTypes": ["pin", "digest", "pinDigest"],
+      "automerge": true
     }
   ],
   "reviewers": ["woneill"]
