@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Default preset for use with woneill's repos",
+  "automergeStrategy": "squash",
   "automergeType": "pr",
   "platformAutomerge": true,
   "extends": [
@@ -40,8 +41,7 @@
         "woneill/tailscale-acls",
         "woneill/terraform-dns",
         "woneill/terraform-unifi",
-        "woneill/woneill.com",
-        "woneill/woneill-charts"
+        "woneill/woneill.com"
       ],
       "ignoreTests": true,
       "requiredStatusChecks": null
@@ -49,9 +49,7 @@
     {
       "description": ["Dont pin digests for OCI things"],
       "matchDatasources": ["docker"],
-      "matchDepNames": [
-          "registry.k8s.io/nfd/charts/node-feature-discovery"
-      ],
+      "matchDepNames": ["registry.k8s.io/nfd/charts/node-feature-discovery"],
       "pinDigests": false
     },
     {
