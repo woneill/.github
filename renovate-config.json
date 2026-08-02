@@ -19,18 +19,26 @@
     "group:linters",
     "customManagers:helmChartYamlAppVersions"
   ],
-  "ignoreDeps": ["mosquitto"],
+  "ignoreDeps": [
+    "mosquitto"
+  ],
   "pre-commit": {
     "enabled": true
   },
   "packageRules": [
     {
-      "description": ["Loose versioning for non-semver packages"],
-      "matchDatasources": ["docker"],
+      "description": [
+        "Loose versioning for non-semver packages"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
       "versioning": "loose"
     },
     {
-      "description": ["Automerge without waiting for non-existent tests"],
+      "description": [
+        "Automerge without waiting for non-existent tests"
+      ],
       "matchRepositories": [
         "woneill/.github",
         "woneill/asdf-*",
@@ -47,23 +55,54 @@
       "requiredStatusChecks": null
     },
     {
-      "description": ["Dont pin digests for OCI things"],
-      "matchDatasources": ["docker"],
-      "matchDepNames": ["registry.k8s.io/nfd/charts/node-feature-discovery"],
+      "description": [
+        "Dont pin digests for OCI things"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepNames": [
+        "registry.k8s.io/nfd/charts/node-feature-discovery"
+      ],
       "pinDigests": false
     },
     {
-      "matchManagers": ["github-actions", "pre-commit"],
-      "matchUpdateTypes": ["patch", "minor", "digest"],
+      "matchManagers": [
+        "github-actions",
+        "pre-commit"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "digest"
+      ],
       "ignoreTests": true,
       "requiredStatusChecks": null,
       "automerge": true
     },
     {
-      "matchDepTypes": ["action"],
-      "matchUpdateTypes": ["pin", "digest", "pinDigest"],
+      "matchDepTypes": [
+        "action"
+      ],
+      "matchUpdateTypes": [
+        "pin",
+        "digest",
+        "pinDigest"
+      ],
       "automerge": true
+    },
+    {
+      "description": "Make major updates highly visible",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "addLabels": [
+        "major"
+      ],
+      "commitMessagePrefix": "\u26a0\ufe0f "
     }
   ],
-  "reviewers": ["woneill"]
+  "reviewers": [
+    "woneill"
+  ]
 }
