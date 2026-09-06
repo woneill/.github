@@ -55,16 +55,11 @@
       "requiredStatusChecks": null
     },
     {
-      "description": [
-        "Dont pin digests for OCI things"
-      ],
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchDepNames": [
-        "registry.k8s.io/nfd/charts/node-feature-discovery"
-      ],
-      "pinDigests": false
+        "description": "Don't pin digests for Helmfile dependencies",
+        "matchManagers": [
+            "helmfile"
+        ],
+        "pinDigests": false
     },
     {
       "matchManagers": [
