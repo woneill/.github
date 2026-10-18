@@ -9,14 +9,8 @@ on:
   pull_request:
     paths:
       - safe-settings/**
-      - .github/workflows/safe-settings.yaml
-  workflow_dispatch:
-    inputs:
-      NOOP:
-        description: 'Run in no-op mode'
-        required: false
-        type: boolean
-        default: false
+      - .github/workflows/safe-settings.yml
+  workflow_dispatch: {}
 
 concurrency:
   cancel-in-progress: true
@@ -29,10 +23,10 @@ jobs:
     env:
       LOG_LEVEL: trace
       # Version/tag of github/safe-settings repo to use:
-      SAFE_SETTINGS_VERSION: 2.1.17
+      SAFE_SETTINGS_VERSION: 3.0.0
 
       # Path on GHA runner box where safe-settings code downloaded to:
-      SAFE_SETTINGS_CODE_DIR: .safe-settings-code
+      SAFE_SETTINGS_CODE_DIR: ${{ github.workspace }}/.safe-settings-code
     steps:
       # Self-checkout of 'admin' repo for access to safe-settings config:
       - name: Checkout source
@@ -44,7 +38,7 @@ jobs:
         with:
           ref: ${{ env.SAFE_SETTINGS_VERSION }}
           path: ${{ env.SAFE_SETTINGS_CODE_DIR }}
-          repository: github/safe-settings
+          repository: github-community-projects/safe-settings
 
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
@@ -58,20 +52,6 @@ jobs:
         run: npm install
         working-directory: ${{ env.SAFE_SETTINGS_CODE_DIR }}
 
-      - name: Set no-op mode flag
-        run: |
-          echo "FULL_SYNC_NOP=false" >> "$GITHUB_ENV"
-
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "FULL_SYNC_NOP=true" >> "$GITHUB_ENV"
-          fi
-
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            if [[ "${{ inputs.NOOP }}" != "" ]]; then
-              echo "FULL_SYNC_NOP=${{ inputs.NOOP }}" >> "$GITHUB_ENV"
-            fi
-          fi
-
       - name: Run application
         run: npm run full-sync
         working-directory: ${{ env.SAFE_SETTINGS_CODE_DIR }}
@@ -80,7 +60,6 @@ jobs:
           APP_ID: ${{ vars.SAFE_SETTINGS_APP_ID }}
           CONFIG_PATH: safe-settings
           DEPLOYMENT_CONFIG_FILE: ${{ github.workspace }}/safe-settings/deployment-settings.yml
-          FULL_SYNC_NOP: ${{ env.FULL_SYNC_NOP }}
           GITHUB_CLIENT_ID: ${{ vars.SAFE_SETTINGS_GITHUB_CLIENT_ID }}
           GITHUB_CLIENT_SECRET: ${{ secrets.SAFE_SETTINGS_GITHUB_CLIENT_SECRET }}
           PRIVATE_KEY: ${{ secrets.SAFE_SETTINGS_PRIVATE_KEY }}

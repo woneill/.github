@@ -1,10 +1,10 @@
 ---
 restrictedRepos:
   exclude:
-    - asdf-spruce
-    - asdf-tfsec
+    - asdf-*
     - workflow-agent-evaluation
     - puppetcamp_atlanta_2014
     - puppet-openldap
     - puppet-rssh
     - kishtonite.com
+    - woneill-charts
