@@ -65,7 +65,8 @@
       "description": "Disable digest pinning and release candidates in helm",
       "matchManagers": ["helm-values", "helmv3"],
       "pinDigests": false,
-      "ignoreUnstable": true
+      "ignoreUnstable": true,
+      "versioning": "docker"
     },
     {
       "matchManagers": [
